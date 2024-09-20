@@ -1,0 +1,81 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Press Start 2P", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Loader section -->
+    <div id="loader" class="inset-0 bg-gray-900 flex flex-col justify-center items-center z-50">
+        
+        <img src="./img/a.png" alt="Loading" class="fixed w-full h-full top-0 bottom-0 left-0 right-0 ">
+        <button id="startButton" class="z-50 bg-gray-600 text-white px-6 py-3 rounded-lg text-xl hover:bg-gray-900 transition mt-[18vw] ml-[37vw]">
+            Start Game
+        </button>    
+    </div>
+
+    <div class="relative inline-block" id="game" style="display: none;">
+        <!-- Game UI elements -->
+        <div class="absolute flex w-[100%] items-center p-[20px] justify-end">
+            <!-- player health -->
+            <div class="relative  w-[100%] border-t-4 border-b-4 border-l-4 border-white">
+                <div class="bg-red-600 h-[30px] w=[100%]"></div>
+                <div id="playerHealth" class="bg-[#818cf8] absolute top-0 right-0 bottom-0 w-[100%] "></div>
+            </div>
+            <!-- timer -->
+            <div id="timer" class="bg-black h-[60px] text-white w-[100px] shrink-0 flex items-center justify-center border-[4px] border-white">
+                10
+            </div>
+            <!-- enemy health -->
+            <div class="relative  w-[100%] border-t-4 border-b-4 border-r-4 border-white">
+                <div class="bg-red-600 h-[30px]"></div>
+                <div id="enemyHealth" class="bg-[#818cf8] absolute top-0 left-0 right-0 bottom-0 "></div>
+            </div>
+        </div>
+        <div id="displayText" class="absolute justify-center items-center text-white left-0 right-0 top-0 bottom-0 hidden">
+            Tie
+        </div>
+        <canvas class="w-full h-full"></canvas>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/classes.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            const game = document.getElementById('game');
+            const startButton = document.getElementById('startButton');
+
+            // Event listener for the start button
+            startButton.addEventListener('click', () => {
+                // Hide the loader
+                loader.style.display = 'none';
+
+                // Show the game
+                game.style.display = 'block';
+
+                // Start the game (call your game start function here)
+                startGame();
+            });
+        });
+
+        function startGame() {
+            // Your existing game logic goes here
+            console.log("Game started!");
+            // Call other functions to initialize your game, such as initializing canvas, classes, etc.
+        }
+    </script>
+</body>
